@@ -1,11 +1,14 @@
 $(function(){
+    //initialising
     let audio = document.getElementById('audio');
     let img = document.getElementById('img');
     let songs=['1','2','3'];
     let i=0;
     let l=songs.length;
     
-    $('audio').addClass('no');
+    $('audio').addClass('no');//for the play/pause to disable
+    
+    //next
     $('.a').click(function(){
         if(i==l-1){
             i=0;
@@ -23,6 +26,48 @@ $(function(){
         }
         $('img').addClass("rot");
     });
+    
+    //keyboard events
+    $('body').on('keydown',function(e){
+        //next
+        if(e.keyCode===39){
+            if(i==l-1){
+                i=0;
+            }
+            else{
+                i++;
+            }
+            audio.src=`./Audio/${songs[i]}.mp3`;
+            img.src=`./Images/${songs[i]}.jpg`;
+            audio.play();
+            if(audio.paused){}
+            else{
+                $('.fa-play').closest('li').addClass('hide');
+                $('.fa-pause').closest('li').removeClass('hide');
+            }
+            $('img').addClass("rot");
+        }
+        //previous
+        else if(e.keyCode===37){
+            if(i==0){
+                i=l-1;
+            }
+            else{
+                i--;
+            }
+            audio.src=`./Audio/${songs[i]}.mp3`;
+            img.src=`./Images/${songs[i]}.jpg`;
+            audio.play();   
+            if(audio.paused){}
+            else{
+                $('.fa-play').closest('li').addClass('hide');
+                $('.fa-pause').closest('li').removeClass('hide');
+            }
+            $('img').addClass("rot");
+        }
+    });
+
+    //previous
     $('.b').click(function(){
         if(i==0){
             i=l-1;
@@ -41,6 +86,7 @@ $(function(){
         $('img').addClass("rot");
     });
 
+    //play
     $('.c').click(function(){
         audio.play();   
         $('img').addClass("rot");
@@ -49,16 +95,31 @@ $(function(){
         $('.fa-pause').closest('li').removeClass('hide');
     });
     
+    //pause
     $('.fa-pause').click(function(){
         audio.pause();
-        $('img').addClass("stop");
+        $('img').addClass("stop");//to pause the animation
         $(this).closest('li').addClass('hide');
         $('.fa-play').closest('li').removeClass('hide');
     });
-    if(audio.paused){
-        $('img').addClass("stop");
-        $('.fa-play').closest('li').removeClass('hide');
-        $('.fa-pause').closest('li').addClass('hide');
-    }else{}
+
+    //to play/pause via the spacebar
+    $( 'body' ).on( 'keydown', function ( e ) {
+        if ( e.keyCode === 32 ) {
+            if (audio.paused == true) {
+                audio.play();
+                $('img').addClass("rot");
+                $('img').removeClass("stop");
+                $('.fa-play').closest('li').addClass('hide');
+                $('.fa-pause').closest('li').removeClass('hide');
+
+            }else{
+                audio.pause();
+                $('img').addClass("stop");
+                $('.fa-pause').closest('li').addClass('hide');
+                $('.fa-play').closest('li').removeClass('hide');
+            }
+        }
+    });
 
 });
