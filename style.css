@@ -21,7 +21,7 @@ h1{
 }
 main{
     background-color: white;
-    color: rgba(0, 0, 0, 0.678);
+    color: rgba(0, 0, 0, 0.6);
     width: 600px;
     margin: 0 auto;
     padding: 1.5em;
@@ -63,6 +63,12 @@ audio{
 }
 .rot{
     animation: rotate 4s linear infinite;
+}
+.stop{
+    animation-play-state: paused;
+}
+.no{
+    pointer-events: none;
 }
 @keyframes rotate{
     0%{

@@ -4,7 +4,8 @@ $(function(){
     let songs=['1','2','3'];
     let i=0;
     let l=songs.length;
-
+    
+    $('audio').addClass('no');
     $('.a').click(function(){
         if(i==l-1){
             i=0;
@@ -43,15 +44,21 @@ $(function(){
     $('.c').click(function(){
         audio.play();   
         $('img').addClass("rot");
+        $('img').removeClass("stop");
         $(this).closest('li').addClass('hide');
         $('.fa-pause').closest('li').removeClass('hide');
     });
     
     $('.fa-pause').click(function(){
         audio.pause();
-        $('img').removeClass("rot");
+        $('img').addClass("stop");
         $(this).closest('li').addClass('hide');
         $('.fa-play').closest('li').removeClass('hide');
     });
+    if(audio.paused){
+        $('img').addClass("stop");
+        $('.fa-play').closest('li').removeClass('hide');
+        $('.fa-pause').closest('li').addClass('hide');
+    }else{}
 
 });
