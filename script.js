@@ -30,6 +30,7 @@ $(function(){
     //keyboard events
     $('body').on('keydown',function(e){
         //next
+        $('img').removeClass("stop");
         if(e.keyCode===39){
             if(i==l-1){
                 i=0;
@@ -49,6 +50,7 @@ $(function(){
         }
         //previous
         else if(e.keyCode===37){
+            $('img').removeClass("stop");
             if(i==0){
                 i=l-1;
             }
