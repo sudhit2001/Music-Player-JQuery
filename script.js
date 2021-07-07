@@ -10,6 +10,7 @@ $(function(){
     
     //next
     $('.a').click(function(){
+        $('img').removeClass("stop");
         if(i==l-1){
             i=0;
         }
@@ -68,9 +69,10 @@ $(function(){
             $('img').addClass("rot");
         }
     });
-
+    
     //previous
     $('.b').click(function(){
+        $('img').removeClass("stop");
         if(i==0){
             i=l-1;
         }
