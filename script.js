@@ -6,8 +6,6 @@ $(function(){
     let i=0;
     let l=songs.length;
     
-    $('audio').addClass('no');//for the play/pause to disable
-    
     //next
     $('.a').click(function(){
         $('img').removeClass("stop");
