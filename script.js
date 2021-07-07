@@ -30,8 +30,8 @@ $(function(){
     //keyboard events
     $('body').on('keydown',function(e){
         //next
-        $('img').removeClass("stop");
         if(e.keyCode===39){
+            $('img').removeClass("stop");
             if(i==l-1){
                 i=0;
             }
